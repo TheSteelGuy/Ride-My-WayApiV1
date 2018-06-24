@@ -42,6 +42,7 @@ class SignUp(MethodView):
         return make_response(jsonify(
             {'message': 'ensure you have provide all required details'}
         )), 400
+ 
 
 class SignIn(MethodView):
     ''' a view class for signin'''
@@ -70,11 +71,13 @@ class Logout(MethodView):
         return make_response(jsonify(
             {'message':'succesfully logged out'}
         )), 200
-
+        
 
 auth_blueprint.add_url_rule(
     '/signup', view_func=SignUp.as_view('signup'), methods=['POST'])
+
 auth_blueprint.add_url_rule(
     '/signin', view_func=SignIn.as_view('signin'), methods=['POST'])
+
 auth_blueprint.add_url_rule(
     '/logout', view_func=Logout.as_view('logout'), methods=['POST'])
