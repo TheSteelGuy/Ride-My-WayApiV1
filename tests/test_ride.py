@@ -26,7 +26,7 @@ class Testbase(TestCase):
 
     def tearDown(self):
         '''make the user list empty after each test case'''
-        rides.clear()
+        rides = list()
 
     def help_post_ride(self):
         ''' help post a ride for testcase'''

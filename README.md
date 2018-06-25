@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/TheSteelGuy/Ride-My-WayApiV1.svg?branch=ft-Getmethods-%23158520402)](https://travis-ci.org/TheSteelGuy/Ride-My-WayApiV1)
+[![Coverage Status](https://coveralls.io/repos/github/TheSteelGuy/Ride-My-WayApiV1/badge.svg?branch=master)](https://coveralls.io/github/TheSteelGuy/Ride-My-WayApiV1?branch=master)
 
 # Ride-my-wayAPIv1
 

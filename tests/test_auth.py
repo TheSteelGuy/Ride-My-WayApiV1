@@ -25,7 +25,7 @@ class Testbase(TestCase):
             'password':'12345'
         }
     def tearDown(self):
-        users.clear()
+        users = []
 
 class TestAuth(Testbase):
     '''tests user authentication methods'''
@@ -36,7 +36,7 @@ class TestAuth(Testbase):
             data=json.dumps(self.signup_user),
             content_type='application/json'
         )
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.data, users)
 
 
     def test_login(self):
