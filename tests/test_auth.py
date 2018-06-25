@@ -4,6 +4,7 @@ from flask import request
 import unittest 
 import json
 from api import create_app
+from api.Auth.views import users
 
 class Testbase(TestCase):
     """parent class"""
@@ -23,17 +24,29 @@ class Testbase(TestCase):
             'username':'collo',
             'password':'12345'
         }
+        URL = 'auth/api/v1/signup'
+        signup = self.client.post(
+            URL,
+            data=json.dumps(self.signup_user),
+            content_type='application/json'
+        )
+
+
+    def tearDown(self):
+        self.users = []
+
+
 
 class TestAuth(Testbase):
     '''tests user authentication methods'''
-    def test_signup(self):
-        """test tregistaration"""
+    def test_signup_twice(self):
+        """test registaration"""
         response = self.client.post(
             'auth/api/v1/signup',
             data=json.dumps(self.signup_user),
             content_type='application/json'
         )
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.status_code, 409)
 
 
     def test_login(self):
@@ -52,16 +65,7 @@ class TestAuth(Testbase):
 
 
     def test_logout(self):
-        '''tests_user logout''' 
-        signup = self.client.post(
-            'auth/api/v1/signup',
-            data=json.dumps(self.signup_user),
-            content_type='application/json'
-        )   
-        self.assertEqual(signup.status_code,201) 
-        self.data_ = json.loads(signup.data.decode())
-        self.assertEqual(self.data_['message'],'welcome to our community,collo')
-
+        '''tests_user logout'''
         logout = self.client.post(
             'auth/api/v1/logout',
             content_type='application/json'

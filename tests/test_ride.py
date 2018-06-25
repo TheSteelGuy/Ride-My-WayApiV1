@@ -4,6 +4,7 @@ from flask import request
 import unittest
 import json
 from api import create_app
+from api.Ride.views import rides
 
 
 class Testbase(TestCase):
@@ -17,7 +18,7 @@ class Testbase(TestCase):
         self.client = self.app.test_client()
         self.ride = {
             'destination': 'testdestination',
-            'date':'22/11/2018',
+            'date':'22-11-2019',
             'time': '9.00 am',
             'meetpoint': 'testmeetpoint',
             'charges': '200'
@@ -57,7 +58,7 @@ class Testbase(TestCase):
             content_type='application/json'
         )
         res = json.loads(rides.data.decode())
-        self.assertIn('testdestination', res['destination'])
+        self.assertEqual(len(res),1)
 
     def test_get_ride(self):
         '''tests rides retrival'''
@@ -70,7 +71,7 @@ class Testbase(TestCase):
             'api/v1/rides/1',
             content_type='application/json'
         )
-        self.assertEqual(ride.data,'')
+        self.assertEqual(ride.status_code, 200)
 
     def test_join_ride(self):
         '''tests if a user can join a ride'''

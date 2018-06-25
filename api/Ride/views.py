@@ -67,9 +67,16 @@ class GetRides(MethodView):
 
 class GetRide(MethodView):
     ''' a view class for a single ride'''
-    def get(self):
+    def get(self, rideid):
         ''' class method which allow user retrieve a siingle ride'''
-
+        ride_by_id = Ride.get_ride(rides, int(rideid))
+        if ride_by_id:
+            return make_response(jsonify(
+                {'ride':ride_by_id}
+            )), 200
+        return make_response(jsonify(
+            {'message':'ride you specified does not exist'}
+        )), 404
 
 
 ride_blueprint.add_url_rule(
