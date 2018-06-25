@@ -33,11 +33,13 @@ the ride leaves, where it is headed e.t.c
 #### How to run flask
 * Run  `python run.py`
 
-# test endpoints using postman
+### test endpoints using postman
 
 
 
 #### Testing:
+```pip install pytest```
+run ```pytest --cov=api```
 
 
 *`
