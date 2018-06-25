@@ -4,6 +4,7 @@ from flask import request
 import unittest 
 import json
 from api import create_app
+from api.Auth.views import users
 
 class Testbase(TestCase):
     """parent class"""
@@ -23,6 +24,8 @@ class Testbase(TestCase):
             'username':'collo',
             'password':'12345'
         }
+    def tearDown(self):
+        users.clear()
 
 class TestAuth(Testbase):
     '''tests user authentication methods'''

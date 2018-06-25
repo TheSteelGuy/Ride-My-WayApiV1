@@ -8,7 +8,8 @@ install:
   - pip install coveralls
 
 script: 
-  - pytest --cov-report term-missing --cov=api
+  - nosetests --with-coverage --cover-package=api
+
 
 after_success:
 - coveralls
