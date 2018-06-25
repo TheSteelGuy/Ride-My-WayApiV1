@@ -1,6 +1,7 @@
-
+[![Build Status](https://travis-ci.org/TheSteelGuy/Ride-My-WayApiV1.svg?branch=ft-Getmethods-%23158520402)](https://travis-ci.org/TheSteelGuy/Ride-My-WayApiV1)
 
 # Ride-my-wayAPIv1
+
 
 ### Introduction
 Ride-my App is a carpooling application that provides drivers with the ability to create ride offers
