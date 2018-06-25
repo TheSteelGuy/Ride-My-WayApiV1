@@ -41,4 +41,11 @@ class Ride():
         if time and destination:
             return True
         return False
-    
+
+    @classmethod
+    def get_ride(cls, rides, ride_id):
+        ''' retrieve a ride based on id'''
+        ride = list(filter(lambda ride_dict:ride_dict['ride_id']==ride_id, rides))
+        if ride:
+            return ride
+        return False
