@@ -24,7 +24,7 @@ the ride leaves, where it is headed e.t.c
 * create the virtual enviroment `virtualenv --python=python2 myenv`
 * change directory to myenv
 * activate virtual environment `source myenv/bin/activate`
-* clone the repo by running on terminal `git clone https://github.com/TheSteelGuy/Hello-BooksAPI.git `
+* clone the repo by running on terminal `git clone https://github.com/TheSteelGuy/Ride-My-WayApiV1.git `
 * run pip install -r requirements.txt
 * change directory to the repo `cd the cloned repo`
 
