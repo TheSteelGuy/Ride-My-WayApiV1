@@ -32,7 +32,10 @@ class SignUp(MethodView):
                 return make_response(jsonify(
                     {'message': check_pass}
                 )), 409
-            
+            if User.does_user_exist(users, phone):
+                return make_response(jsonify(
+                    {'message':'a user with that phone contact already exist'}
+                )), 409
             user_obj = User(username, phone, password, confirm_p)
             user = User.serialize_user(user_obj)
             users.append(user)

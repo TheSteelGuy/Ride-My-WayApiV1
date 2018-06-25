@@ -47,5 +47,12 @@ class User():
             return 'password should be more than 5 characters long'
         return True
         
+    @classmethod
+    def does_user_exist(cls, users, phone_contact):
+        ''' find out if user exist meant to reduce the number and areas of for looping'''
+        user_ = list(filter(lambda user_dict:user_dict['phone']==phone_contact, users))
+        if user_:
+            return True
+        return False
 
     
