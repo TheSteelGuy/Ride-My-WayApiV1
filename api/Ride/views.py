@@ -34,8 +34,13 @@ class RideOffer(MethodView):
                     jsonify({
                         'message': 'rides can only be of the present and the future'
                     })), 409
+            if Ride.does_ride_exist(rides, dest, time):
+                return make_response(jsonify({'message':'you are already offering a ride to this destination on this date'}))
+            id_count = 1 
+            for item in rides:
+                id_count += 1 
             ride = Ride(dest, date, time, meet_p, charges)
-            ride_dict = Ride.serialize_ride(ride)
+            ride_dict = Ride.serialize_ride(ride, id_count)
             rides.append(ride_dict)
             return  make_response(jsonify(
                 {'message':'succesfully created ride to {} on {}'.format(ride_dict['destination'],ride_dict['date'])}
@@ -52,6 +57,13 @@ class GetRides(MethodView):
     ''' a view class for rides'''
     def get(self):
         ''' class method which fetch all rides'''
+        if not rides:
+            return make_response(jsonify(
+                {'message':'no ride currently avilable'}
+            )), 204
+        return make_response(jsonify(
+            {'Avilable rides':rides}
+        )), 200
 
 class GetRide(MethodView):
     ''' a view class for a single ride'''
