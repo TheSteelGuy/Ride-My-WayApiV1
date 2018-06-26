@@ -14,8 +14,6 @@ class Ride():
         self.meetpoint = meetpoint
         self.charges = charges
 
-
-
     @classmethod
     def serialize_ride(cls, ride_object, id_count):
         ''' takes a user object and returns its dict representation'''
@@ -36,8 +34,11 @@ class Ride():
     @classmethod
     def does_ride_exist(cls, rides, destination, time):
         ''' find out if user exist meant to reduce the number and areas of for looping'''
-        destination = list(filter(lambda ride_dict:ride_dict['destination']==destination, rides))
-        time = list(filter(lambda ride_dict:ride_dict['time']==time, rides))
+        destination = list(
+            filter(
+                lambda ride_dict: ride_dict['destination'] == destination,
+                rides))
+        time = list(filter(lambda ride_dict: ride_dict['time'] == time, rides))
         if time and destination:
             return True
         return False
@@ -45,7 +46,10 @@ class Ride():
     @classmethod
     def get_ride(cls, rides, ride_id):
         ''' retrieve a ride based on id'''
-        ride = list(filter(lambda ride_dict:ride_dict['ride_id']==ride_id, rides))
+        ride = list(
+            filter(
+                lambda ride_dict: ride_dict['ride_id'] == ride_id,
+                rides))
         if ride:
             return ride
         return False
