@@ -38,7 +38,7 @@ class RideOffer(MethodView):
                     })), 409
             if Ride.does_ride_exist(rides, dest, time):
                 return make_response(jsonify(
-                    {'message': 'you are already offering a ride to this destination on this date'}))
+                    {'message': 'you are already offering a ride to this destination on this date'})), 409
             id_count = 1
             for item in rides:
                 id_count += 1

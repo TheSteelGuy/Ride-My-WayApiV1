@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/TheSteelGuy/Ride-My-WayApiV1.svg?branch=ft-Getmethods-%23158520402)](https://travis-ci.org/TheSteelGuy/Ride-My-WayApiV1)
 [![Coverage Status](https://coveralls.io/repos/github/TheSteelGuy/Ride-My-WayApiV1/badge.svg?branch=ft-Getmethods-%23158520402)](https://coveralls.io/github/TheSteelGuy/Ride-My-WayApiV1?branch=ft-Getmethods-%23158520402)
+[![Maintainability](https://api.codeclimate.com/v1/badges/e2de538dbd66b0ebc848/maintainability)](https://codeclimate.com/github/TheSteelGuy/Ride-My-WayApiV1/maintainability)
 
 # Ride-my-wayAPIv1
 
@@ -12,7 +13,7 @@ Required Features
 2. Drivers can add ride offers..
 3. Passengers can view all available ride offers.
 4. Passengers can see the details of a ride offer and request to join the ride. E.g What time
-the ride leaves, where it is headed e.t.c
+the ride leaves, and where it is headed 
 5. Drivers can view the requests to the ride offer they created.
 6. Drivers can either accept or reject a ride request.
 
