@@ -30,7 +30,7 @@ The app purely uses python data structures hence no persistance
     }
     ```
 
-* #### User Login.
+* #### User sigin.
     `POST /api/v1/auth/signin`: 
     ```
     headers = {content_type:application/json}
@@ -42,9 +42,10 @@ The app purely uses python data structures hence no persistance
     ```
 
 * #### User Logout. 
-     headers = {content_type:application/json}
     `POST /api/v1/auth/logout`
-    
+    ```
+    headers = {content_type:application/json}
+    ```
 
 * #### Create a ride offer.
     `POST /api/v1/rides`: 
@@ -61,12 +62,17 @@ The app purely uses python data structures hence no persistance
     ```
 * #### Get available rides.
     `GET /api/v1/rides`
+    ```
     headers = {content_type:application/json}
+    ```
 
 
-* #### Get a specific ride.
-     headers = {content_type:application/json}    
+* #### Get a specific ride.   
     `GET /api/v1/rides/<rideId>` 
+    ```
+    headers = {content_type:application/json} 
+    ```
+    
 
 * #### Make requests to join a ride.
     `POST /api/v1/rides/<rideId>/requests`:
@@ -76,14 +82,14 @@ The app purely uses python data structures hence no persistance
     {
         "destination": "mombasa"
     }
-* #### Retract request to join a ride
+    ```
+* #### Cancel a ride already offered 
     `DELETE /api/v1/rides/<rideId>/cancel`
-
+    ```
     headers = {content_type:application/json}
+    ```
 
 ## Installation guide and usage
-
-
 
  #### **Clone the repo.**
     ```
