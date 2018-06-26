@@ -110,11 +110,11 @@ The app purely uses python data structures hence no persistance
 
  #### **Run the app**
    ```
-    (myenv)$ flask run
+    (myenv)$ python run.py
    ```
  #### **Run Tests**
   ```
-  (myenv)$ pytest
+  (myenv)$ pytest --cov=tests
   ```
 ### Summary of the endpoints
 
