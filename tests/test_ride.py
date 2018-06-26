@@ -8,13 +8,14 @@ from api.Ride.views import rides
 
 
 class Testbase(TestCase):
-    """parent class"""
-
+    '''parent class for all test cases'''
     def create_app(self):
+        '''pass testing enviroment'''
         self.app = create_app('testing')
         return self.app
 
     def setUp(self):
+        ''' prepare test cases'''
         self.client = self.app.test_client()
         self.ride = {
             'destination': 'testdestination',
@@ -29,7 +30,7 @@ class Testbase(TestCase):
         del rides[:]
 
     def help_post_ride(self):
-        ''' help post a ride for testcase'''
+        ''' helper method to create a ride for testcases'''
         ride_response = self.client.post(
             'api/v1/rides',
             data=json.dumps(self.ride),
@@ -47,7 +48,7 @@ class Testbase(TestCase):
         self.assertEqual(ride.status_code,201)
     
     def test_get_rides(self):
-        '''tests getting a ride by id'''
+        '''tests fetching all rides'''
         self.client.post(
             '/api/v1/rides',
             data=json.dumps(self.ride),
@@ -61,7 +62,7 @@ class Testbase(TestCase):
         self.assertEqual(len(res),1)
 
     def test_get_ride(self):
-        '''tests rides retrival'''
+        '''tests a single ride retrival'''
         self.client.post(
             '/api/v1/rides',
             data=json.dumps(self.ride),
@@ -73,7 +74,7 @@ class Testbase(TestCase):
         )
         self.assertEqual(ride.status_code, 200)
 
-    def test_join_ride(self):
+    def test_join_ride_request(self):
         '''tests if a user can join a ride'''
         ride = self.help_post_ride()
         join_ride =self.client.post(
@@ -83,8 +84,8 @@ class Testbase(TestCase):
         res = json.loads(join_ride.data.decode())
         self.assertIn('you have succefully sent a join request, you will receive notification soon',res['message'])
     
-    def test_cancel_ride(self):
-        '''tests if a user can cancel a ride'''
+    def test_cancel_ride_offer(self):
+        '''tests if a user can cancel a ride they offered'''
         ride = self.help_post_ride()
         cancel_ride = self.client.delete(
             'api/v1/rides/1/cancel',

@@ -13,10 +13,10 @@ joins_for_a_ride = list()
 
 
 class RideOffer(MethodView):
-    ''' a view class with methods to hande ride(s)'''
+    ''' handles ride creation/offering process '''
 
     def post(self):
-        ''' class method which allows user to sign up'''
+        ''' create ride a ride offer '''
         dest = request.json.get('destination')
         date = request.json.get('date')
         time = request.json.get('time')
@@ -53,7 +53,7 @@ class RideOffer(MethodView):
         )), 400
 
     def delete(self, rideid):
-        '''cancel ride'''
+        '''cancel a ride offer'''
         ride_by_id = Ride.get_ride(rides, int(rideid))
         if ride_by_id:
             rides.remove(ride_by_id[0])
@@ -66,24 +66,24 @@ class RideOffer(MethodView):
 
 
 class GetRides(MethodView):
-    ''' a view class for rides'''
+    ''' handles fetching of all rides'''
 
     def get(self):
-        ''' class method which fetch all rides'''
+        ''' fetch a ride'''
         if not rides:
             return make_response(jsonify(
-                {'message': 'no ride currently avilable'}
+                {'message': 'no ride currently available'}
             )), 204
         return make_response(jsonify(
-            {'Avilable rides': rides}
+            {'Available rides': rides}
         )), 200
 
 
 class GetRide(MethodView):
-    ''' a view class for a single ride'''
+    ''' handles fetching of a single ride'''
 
     def get(self, rideid):
-        ''' class method which allow user retrieve a siingle ride'''
+        ''' fetch a ride by id'''
         ride_by_id = Ride.get_ride(rides, int(rideid))
         if ride_by_id:
             return make_response(jsonify(
@@ -95,10 +95,10 @@ class GetRide(MethodView):
 
 
 class JoinRide(MethodView):
-    ''' class request to join ride'''
+    ''' handles joining of a ride by a user'''
 
     def post(self, rideid):
-        '''method which handles join ride'''
+        ''' join a ride by id'''
         ride_by_id = Ride.get_ride(rides, int(rideid))
         if not ride_by_id:
             return make_response(jsonify(
@@ -107,7 +107,7 @@ class JoinRide(MethodView):
         join_ride = {
             'ride_id': rideid,
             'phone_contact': '072-111-1111',
-            'username': 'collo'
+            'destination': 'Mombasa'
         }
         joins_for_a_ride.append(join_ride)
         return make_response(jsonify(

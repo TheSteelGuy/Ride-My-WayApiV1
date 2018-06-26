@@ -5,7 +5,7 @@ import re
 
 
 class User():
-    '''a base pssanger class from which a driver can be made'''
+    '''handles a user object'''
 
     def __init__(self, name, phone, password, confirm_p):
         ''' constructor method to give a user its attributes'''
@@ -16,7 +16,7 @@ class User():
 
     @classmethod
     def verify_password(cls, pwd, c_pwd):
-        '''verifies if the password and confirm pass matches'''
+        '''verifies if the password and confirm password matches'''
         if pwd == c_pwd:
             return True
         return False
@@ -32,7 +32,7 @@ class User():
 
     @staticmethod
     def check_phone(phone):
-        '''checks if a username meets ceratin threshhlolds'''
+        '''checks if a phone contact follows a certain pattern'''
         regex = "\w{3}-\w{3}-\w{4}"
         if re.search(regex, phone):
             if phone[0] != 0 and phone[1] != 7:
@@ -50,7 +50,7 @@ class User():
 
     @classmethod
     def does_user_exist(cls, users, phone_contact):
-        ''' find out if user exist meant to reduce the number and areas of for looping'''
+        ''' find out if user exist '''
         user_ = list(
             filter(
                 lambda user_dict: user_dict['phone'] == phone_contact,
