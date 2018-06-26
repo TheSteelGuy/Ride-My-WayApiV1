@@ -6,6 +6,7 @@ omit =
 
 [report]
 omit =
-    app/error.py
+    api/errors_handler.py
     venv/*
     */python?.?/*
+    
