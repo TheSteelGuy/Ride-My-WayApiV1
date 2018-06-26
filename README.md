@@ -4,55 +4,120 @@
 
 # Ride-my-wayAPIv1
 
+## Introduction
+* An API for the Ride-my-way front end app.
+* Ride-my-way App is a carpooling application that provides drivers with the ability to    
+  create ride offers and passengers to join available ride offers.
+## NB
+The app purely uses python data structures hence no persistance
 
-### Introduction
-Ride-my App is a carpooling application that provides drivers with the ability to create ride offers
-and passengers to join available ride offers.
-Required Features
-1. Users can create an account and log in.
-2. Drivers can add ride offers..
-3. Passengers can view all available ride offers.
-4. Passengers can see the details of a ride offer and request to join the ride. E.g What time
-the ride leaves, and where it is headed 
-5. Drivers can view the requests to the ride offer they created.
-6. Drivers can either accept or reject a ride request.
+## Technologies used & needed.
+* **[Python2](https://www.python.org/downloads/)**).
+* **[Flask](flask.pocoo.org/)**  
 
-#### Getting Started
+## Current endpoints(More to follow)
+*  #### User signup. 
+
+    `POST /api/v1/auth/signup`: 
+    ```
+    headers = {content_type:application/json}
+
+    {
+        "name": "collo",
+        "email: "070-333-2222",
+        "password: "12345",
+        "confirm_pwd":"1234"
+    }
+    ```
+
+* #### User Login.
+    `POST /api/v1/auth/signin`: 
+    ```
+    headers = {content_type:application/json}
+
+    {
+        "username":"collo",
+        "password": "1234"
+    }
+    ```
+
+* #### User Logout. 
+     headers = {content_type:application/json}
+    `POST /api/v1/auth/logout`
+    
+
+* #### Create a ride offer.
+    `POST /api/v1/rides`: 
+    ```
+    headers = {content_type:application/json}
+
+    {
+        "destination": "Mombasa",
+        "date": "11-8-2018",
+        "time": "26-06-2018 21:00",
+        "meetpoint": "some description",
+        "charges": 1200,
+    }
+    ```
+* #### Get available rides.
+    `GET /api/v1/rides`
+    headers = {content_type:application/json}
+
+
+* #### Get a specific ride.
+     headers = {content_type:application/json}    
+    `GET /api/v1/rides/<rideId>` 
+
+* #### Make requests to join a ride.
+    `POST /api/v1/rides/<rideId>/requests`:
+    ```
+    headers = {content_type:application/json}
+
+    {
+        "destination": "mombasa"
+    }
+* #### Retract request to join a ride
+    `DELETE /api/v1/rides/<rideId>/cancel`
+
+    headers = {content_type:application/json}
+
+## Installation guide and usage
 
 
 
-
-#### Setting
-* First install the virtual environment globally `sudo pip instal virtualenv`
-* create the virtual enviroment `virtualenv --python=python2 myenv`
-* change directory to myenv
-* activate virtual environment `source myenv/bin/activate`
-* clone the repo by running on terminal `git clone https://github.com/TheSteelGuy/Ride-My-WayApiV1.git `
-* run pip install -r requirements.txt
-* change directory to the repo `cd the cloned repo`
-
-#### How to run flask
-* Run  `python run.py`
-
-### test endpoints using postman
-send `GET, POST, DELETE` to there equivalent endpoints each time passing required parameters. 
-
-Interact with the Api live at https://infinite-dusk-68356.herokuapp.com/
+ #### **Clone the repo.**
+    ```
+    $ git clone https://github.com/TheSteelGuy/Ride-My-WayApiV1.git
+    ```
+ #### **Create virtual environment & Activate.**
+    ```
+    $ virtualenv -p python myenv 
+    $ source myenv/bin/activate
+    ```
+ #### **Install Dependancies.**
+    ```
+    (myenv)$ pip install -r requirements.txt
+    ```
+ #### **Enviroment variables.**
 
 
-#### Testing:
-run ```pytest --cov=api```
 
-
-*`
-#### Ride my way API endpoints
+ #### **Run the app**
+   ```
+    (myenv)$ flask run
+   ```
+ #### **Run Tests**
+  ```
+  (myenv)$ pytest
+  ```
+### Summary of the endpoints
 
 | Endpoints                                       |       Functionality                  |
 | ------------------------------------------------|:------------------------------------:|
-| `POST /aut/api/v1/signup`                       |  creates a user
-| `POST /api/v1/auth/signin                       |  login a user                        |   
+| `POST /api/v1/auth/signup`                      |  creates a user
+| `POST /api/v1/auth/signin `                     |  login a user                        |   
 | `GET  /api/v1/rides/<rideId>`                   |  Get a ride                          |
 | `GET  /api/v1/rides`                            |  gets all rides                      |
 | `DELETE /api/v1/rides/<rideId>`                 |  deletes/cancels                     |
 | `POST  /api/v1/users/rideId/requests`           |  Request to join aride               |
-|` POST auth/api/v1/logout`                       |  logs out a user                     |
+|` POST /api/v1/auth/logout`                      |  logs out a user                     |
