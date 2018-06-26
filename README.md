@@ -34,11 +34,12 @@ the ride leaves, where it is headed e.t.c
 * Run  `python run.py`
 
 ### test endpoints using postman
+send `GET, POST, DELETE` to there equivalent endpoints each time passing required parameters. 
 
+Interact with the Api live at https://infinite-dusk-68356.herokuapp.com/
 
 
 #### Testing:
-```pip install pytest```
 run ```pytest --cov=api```
 
 
