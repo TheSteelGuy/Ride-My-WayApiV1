@@ -15,6 +15,8 @@ The app purely uses python data structures hence no persistance
 * **[Python2](https://www.python.org/downloads/)**).
 * **[Flask](flask.pocoo.org/)**  
 
+## Link to heroku:
+https://infinite-dusk-68356.herokuapp.com/
 ## Current endpoints(More to follow)
 *  #### User signup. 
 
