@@ -26,7 +26,7 @@ class Testbase(TestCase):
 
     def tearDown(self):
         '''make the user list empty after each test case'''
-        rides = list()
+        del rides[:]
 
     def help_post_ride(self):
         ''' help post a ride for testcase'''
@@ -44,7 +44,7 @@ class Testbase(TestCase):
             data=json.dumps(self.ride),
             content_type='application/json'
         )
-        self.assertTrue(ride.status_code==201)
+        self.assertEqual(ride.status_code,201)
     
     def test_get_rides(self):
         '''tests getting a ride by id'''
@@ -76,16 +76,22 @@ class Testbase(TestCase):
     def test_join_ride(self):
         '''tests if a user can join a ride'''
         ride = self.help_post_ride()
-        user_details = {
-            'username':'testuser',
-            'phone':'0734252525'
-        }
-        self.client.post(
+        join_ride =self.client.post(
             'api/v1/rides/1/requests',
-            data=json.dumps(user_details),
             content_type='application/json'
         )
-
+        res = json.loads(join_ride.data.decode())
+        self.assertIn('you have succefully sent a join request, you will receive notification soon',res['message'])
+    
+    def test_cancel_ride(self):
+        '''tests if a user can cancel a ride'''
+        ride = self.help_post_ride()
+        cancel_ride = self.client.delete(
+            'api/v1/rides/1/cancel',
+            content_type='application/json'
+        )
+        res = json.loads(cancel_ride.data.decode())
+        self.assertEqual(len(res),1)
 
 if __name__ == '__main__':
     unittest.main()

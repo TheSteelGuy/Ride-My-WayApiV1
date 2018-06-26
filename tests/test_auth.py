@@ -33,7 +33,7 @@ class Testbase(TestCase):
 
 
     def tearDown(self):
-        self.users = []
+        del users[:]
 
 
 

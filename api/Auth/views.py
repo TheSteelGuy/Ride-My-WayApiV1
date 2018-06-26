@@ -10,8 +10,10 @@ auth_blueprint = Blueprint('auth', __name__)
 
 users = list()
 
+
 class SignUp(MethodView):
     ''' a view class for sign up'''
+
     def post(self):
         ''' class method which allows user to sign up'''
         username = request.json.get('username')
@@ -21,7 +23,7 @@ class SignUp(MethodView):
         if username and phone and password and confirm_p:
             if not User.check_phone(phone):
                 return make_response(jsonify(
-                    {'message':'enter phone contact in 072-333-2222 format'}
+                    {'message': 'enter phone contact in 072-333-2222 format'}
                 )), 409
             if not User.verify_password(password, confirm_p):
                 return make_response(jsonify(
@@ -34,7 +36,7 @@ class SignUp(MethodView):
                 )), 409
             if User.does_user_exist(users, phone):
                 return make_response(jsonify(
-                    {'message':'a user with that phone contact already exist'}
+                    {'message': 'a user with that phone contact already exist'}
                 )), 409
             user_obj = User(username, phone, password, confirm_p)
             user = User.serialize_user(user_obj)
@@ -45,36 +47,42 @@ class SignUp(MethodView):
         return make_response(jsonify(
             {'message': 'ensure you have provide all required details'}
         )), 400
- 
+
 
 class SignIn(MethodView):
     ''' a view class for signin'''
+
     def post(self):
         ''' class method which allows user to sign in'''
         username = request.json.get('username')
         password = request.json.get('password')
         if username and password:
-            user = filter(lambda dict_:dict_['username']==username, users)
-            password = list(filter(lambda dict_:dict_['password']==password, users))
+            user = filter(lambda dict_: dict_['username'] == username, users)
+            password = list(
+                filter(
+                    lambda dict_: dict_['password'] == password,
+                    users))
             if user and password:
                 return make_response(jsonify(
-                    {'message':'you have succefully logged in'}
+                    {'message': 'you have succefully logged in'}
                 )), 200
             return make_response(jsonify(
-                {'message':'wrong credentials'}
+                {'message': 'wrong credentials'}
             )), 401
         return make_response(jsonify(
-            {'message':'ensure you have provide all required details'}
+            {'message': 'ensure you have provide all required details'}
         )), 400
+
 
 class Logout(MethodView):
     ''' a view class for logout '''
+
     def post(self):
         ''' class method which allows user to sign out'''
         return make_response(jsonify(
-            {'message':'succesfully logged out'}
+            {'message': 'succesfully logged out'}
         )), 200
-        
+
 
 auth_blueprint.add_url_rule(
     '/signup', view_func=SignUp.as_view('signup'), methods=['POST'])
