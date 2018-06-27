@@ -22,12 +22,10 @@ def create_test_ride_table():
     cursor = CONN.cursor()
     cursor.execute(ride_table)
     CONN.commit()
-    cursor.close()
-    CONN.close()
-    return 'action executed succefully'
+    return True
 
 def create_test_user_table():
-    ride_table = (
+    user_table = (
     """
     CREATE TABLE user_tests(
             id SERIAL PRIMARY KEY,
@@ -36,3 +34,40 @@ def create_test_user_table():
             password VARCHAR(64),
             confirm_pwd VARCHAR(24))
     """)
+    cursor = CONN.cursor()
+    cursor.execute(user_table)
+    CONN.commit()
+    return True
+def create_user_ride():
+    '''create tables'''
+
+    ride_table = (
+    """
+    CREATE TABLE ride_tests (
+            id SERIAL PRIMARY KEY,
+            destination VARCHAR(64),
+            ride_date VARCHAR(40),
+            departure_time VARCHAR(10),
+            meetpoint VARCHAR(64) ,
+            phone_contact INTEGER,
+            fare_charges FLOAT)
+    """)
+    cursor = CONN.cursor()
+    cursor.execute(ride_table)
+    CONN.commit()
+    return True
+
+def create_user_table():
+    user_table = (
+    """
+    CREATE TABLE user_tests(
+            id SERIAL PRIMARY KEY,
+            username VARCHAR(40),
+            phone VARCHAR(10),
+            password VARCHAR(64),
+            confirm_pwd VARCHAR(24))
+    """)
+    cursor = CONN.cursor()
+    cursor.execute(user_table)
+    CONN.commit()
+    return True

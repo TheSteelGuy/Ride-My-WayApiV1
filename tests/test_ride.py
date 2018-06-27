@@ -24,7 +24,6 @@ class ParentTest (unittest.TestCase):
         self.app_context.push()
         self.client = self.app.test_client()
         create_test_ride_table()
-        self.client = self.app.test_client()
         self.ride = {
             'destination': 'testdestination',
             'date': '21-10-2018',
@@ -63,8 +62,9 @@ class ParentTest (unittest.TestCase):
 
     def tearDown(self):
         cursor = self.conn.cursor()
-        cursor.execute("DROP TABLE test_rides")
+        cursor.execute("DROP TABLE ride_tests")
         self.conn.commit()
+        cursor.close()
         self.conn.close()
 
     def post_ride_helper(self):

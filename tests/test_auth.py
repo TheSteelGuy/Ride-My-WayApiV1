@@ -47,7 +47,7 @@ class ParentTest (unittest.TestCase):
 
     def tearDown(self):
         cursor = self.conn.cursor()
-        cursor.execute("DROP TABLE users")
+        cursor.execute("DROP TABLE test_users")
         self.conn.commit()
         self.conn.close()
 
