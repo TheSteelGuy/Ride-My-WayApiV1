@@ -1,13 +1,11 @@
-'''ride.py'''
-from datetime import datetime, date
-import re
+'''ride class. Contains the methods for this class'''
 
 
 class Ride():
     '''ride class'''
 
     def __init__(self, destination, date, time, meetpoint, charges):
-        ''' constructor method to give a user its attributes'''
+        ''' constructor method to give a user object its attributes'''
         self.destination = destination
         self.date = date
         self.time = time
@@ -23,7 +21,8 @@ class Ride():
             time=ride_object.time,
             meetpoint=ride_object.meetpoint,
             charges=ride_object.charges,
-            ride_id=id_count
+            ride_id=id_count,
+            owner_id='owner_id' #this will be  taken care of by jwt.for now there is no way of passing it
         )
 
     @staticmethod
@@ -33,7 +32,7 @@ class Ride():
 
     @classmethod
     def does_ride_exist(cls, rides, destination, time):
-        ''' find out if user exist meant to reduce the number and areas of for looping'''
+        ''' find out if a ride exist'''
         destination = list(
             filter(
                 lambda ride_dict: ride_dict['destination'] == destination,

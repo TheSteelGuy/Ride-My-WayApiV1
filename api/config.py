@@ -2,12 +2,12 @@
 
 
 class BaseConfig():
-    '''parent class subclassed by all other environ ment classes'''
+    '''parent class subclassed by all other environment objects'''
     DEBUG = False
 
 
 class Development(BaseConfig):
-    '''class contains all configs relatedd to development enviroment'''
+    ''' development based configarations class'''
     DEBUG = True
 
 
@@ -17,7 +17,7 @@ class Test(BaseConfig):
 
 
 class Production(BaseConfig):
-    '''production configarations'''
+    '''production based configarations class'''
     pass
 
 

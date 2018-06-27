@@ -12,10 +12,10 @@ users = list()
 
 
 class SignUp(MethodView):
-    ''' a view class for sign up'''
+    '''handles signup process'''
 
     def post(self):
-        ''' class method which allows user to sign up'''
+        '''create a new user'''
         username = request.json.get('username')
         phone = request.json.get('phone')
         password = request.json.get('password')
@@ -50,10 +50,10 @@ class SignUp(MethodView):
 
 
 class SignIn(MethodView):
-    ''' a view class for signin'''
+    '''handles login/sign in process'''
 
     def post(self):
-        ''' class method which allows user to sign in'''
+        '''login/sign in a user'''
         username = request.json.get('username')
         password = request.json.get('password')
         if username and password:
@@ -75,10 +75,10 @@ class SignIn(MethodView):
 
 
 class Logout(MethodView):
-    ''' a view class for logout '''
+    ''' handles logout process'''
 
     def post(self):
-        ''' class method which allows user to sign out'''
+        '''logout a user'''
         return make_response(jsonify(
             {'message': 'succesfully logged out'}
         )), 200
