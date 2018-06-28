@@ -70,7 +70,7 @@ class ParentTest (unittest.TestCase):
     def post_ride_helper(self):
         ''' helper method to create a ride for testcases'''
         ride_response = self.client.post(
-            'api/v1/rides',
+            'api/v1/users/rides',
             data=json.dumps(self.ride),
             content_type='application/json'
         )
@@ -79,7 +79,7 @@ class ParentTest (unittest.TestCase):
     def test_ride_creation(self):
         '''test if a user can create a ride offer'''
         ride = self.client.post(
-            'api/v1/rides',
+            'api/v1/user/rides',
             data=json.dumps(self.ride),
             content_type='application/json',
             headers=HEADERS
@@ -90,7 +90,7 @@ class ParentTest (unittest.TestCase):
     def test_fetch_a_single_ride(self):
         '''tests a single ride retrival'''
         self.client.post(
-            '/api/v1/rides',
+            '/api/v1/users/rides',
             data=json.dumps(self.ride),
             content_type='application/json'
         )
@@ -155,7 +155,7 @@ class ParentTest (unittest.TestCase):
     def test_get_rides(self):
         '''tests fetching all rides'''
         self.client.post(
-            '/api/v1/rides',
+            '/api/v1/users/rides',
             data=json.dumps(self.ride),
             content_type='application/json'
         )

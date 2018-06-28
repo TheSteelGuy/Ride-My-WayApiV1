@@ -92,7 +92,7 @@ class TestAuthentication(ParentTest):
     def test_if_user_can_signin(self):
         '''tests if a user can log in with correct credentials'''
         login = self.client.post(
-            'api/v1/auth/signin',
+            'api/v1/auth/login',
             data=json.dumps(self.login_user),
             content_type='application/json'
         )

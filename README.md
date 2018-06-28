@@ -33,7 +33,7 @@ https://infinite-dusk-68356.herokuapp.com/
     ```
 
 * #### User sigin.
-    `POST /api/v1/auth/signin`: 
+    `POST /api/v1/auth/login`: 
     ```
     headers = {content_type:application/json}
 
@@ -50,7 +50,7 @@ https://infinite-dusk-68356.herokuapp.com/
     ```
 
 * #### Create a ride offer.
-    `POST /api/v1/rides`: 
+    `POST /api/v1/users/rides`: 
     ```
     headers = {content_type:application/json}
 
@@ -125,7 +125,7 @@ https://infinite-dusk-68356.herokuapp.com/
 | `POST /api/v1/auth/signup`                      |  creates a user
 | `POST /api/v1/auth/signin `                     |  login a user                        |   
 | `GET  /api/v1/rides/<rideId>`                   |  Get a ride                          |
-| `GET  /api/v1/rides`                            |  gets all rides                      |
+| `GET  /api/v1/users/rides`                            |  gets all rides                      |
 | `DELETE /api/v1/rides/<rideId>`                 |  deletes/cancels                     |
 | `POST  /api/v1/users/rideId/requests`           |  Request to join aride               |
 |` POST /api/v1/auth/logout`                      |  logs out a user                     |
