@@ -14,6 +14,13 @@ class User():
         self.password = password
         self.confirm_p = confirm_p
 
+    def save_ride(self, user_tuple):
+        ''' save ride in the table'''
+        cursor = CONN.cursor()
+        sql_query = 'INSERT INTO users (username, phone_contact, password) VALUES(%s,%s,%s)'
+        cursor.execute(sql_query,ride_tuple)
+        CONN.commit()
+
     @classmethod
     def verify_password(cls, pwd, c_pwd):
         '''verifies if the password and confirm password matches'''
