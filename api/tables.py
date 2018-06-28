@@ -52,3 +52,16 @@ def create_join_req_table():
     cursor.execute(join_)
     CONN.commit()
     return True
+
+def create_tokens_table():
+    token_ = (
+    """
+    CREATE TABLE blacklist_tokens(
+            id SERIAL PRIMARY KEY,
+            token VARCHAR(400)
+            )
+    """)
+    cursor = CONN.cursor()
+    cursor.execute(token_)
+    CONN.commit()
+    return True
